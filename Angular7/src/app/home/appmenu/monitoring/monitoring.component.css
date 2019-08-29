@@ -21,11 +21,8 @@
   }
   .device{
     list-style-type: none;
+    padding-left: 5px;
     color: white;
-  }
-  .device li
-  {
-    list-style-type: none;
   }
   .sidebar {
     overflow: hidden;
@@ -257,9 +254,10 @@
     background:#286090;
   }
   
-  
-  
-  
+  .btn-name:hover,  .btn-name:focus
+  {
+    color: #B1BFC9;
+  }
   
   .card {
     position: relative;
