@@ -7,7 +7,6 @@ import { Device } from '../Models/Device';
 import { FormBuilder } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { DeviceUser } from '../Models/DeviceUser';
 
 @Injectable({
   providedIn: 'root'
@@ -30,35 +29,23 @@ export class DeviceService {
     iconAnchor: [0, 0], // point of the icon which will correspond to marker's location
     popupAnchor: [0, 0] // point from which the popup should open relative to the iconAnchor
   });
-  public Devices: Device[] = [];
+  public Devices: Device[];
   public SelectedDevice: Device = null;
 
-  readonly BaseURI = 'https://localhost:44374/api';
+  readonly BaseURI = 'http://207.180.214.149:5000/api';
   constructor(private fb: FormBuilder, private http: HttpClient, private cookieService: CookieService) {
-    this.GetDevices();
+    this.http.request('GET', this.BaseURI + '/device/all', { responseType: "json" }).subscribe(
+      (res: any) => {
+        this.Devices = res;
+      }
+    );
     this.socket = io('http://207.180.214.149:8001');
   }
-
-  public GetDevices() {
-    if (this.cookieService.check("CurrentUser")) {
-      const headers = new HttpHeaders().set('content-type', 'application/json');
-      var id = this.cookieService.get("CurrentUser");
-      this.http.post(this.BaseURI + '/device/all', id, {
-        headers
-      }).subscribe(
-        (res: any) => {
-          this.Devices = res;
-        }
-      );;
-    }
-  }
-
 
   public AddNewPosition = (msg) => {
     const pos = JSON.parse(msg);
     console.log(pos);
     this.latlng = new L.LatLng(pos.latitude, pos.longitude);
-
     if (this.Markers.get(pos.deviceId) === undefined) {
       const marker = new L.Marker(this.latlng, { icon: this.greenIcon });
       marker.bindPopup(String(pos.deviceId));
@@ -106,6 +93,7 @@ export class DeviceService {
     }, 800);
     /////////////////////////////////////////////////
     this.socket.on('test', this.AddNewPosition);
+    // this.socket.on('test2', this.);
   }
 
   rotateMarker(latlng1: L.LatLng, latlng2: L.LatLng) {
@@ -124,55 +112,19 @@ export class DeviceService {
     this.SelectedDevice = device;
   }
 
-
-  //bad code
-  updateDevice(model: Device, type: String = "update") {
-    if (!this.cookieService.check("CurrentUser"))
-      return null;
-
+  updateDevice(model: Device) {
     const headers = new HttpHeaders().set('content-type', 'application/json');
-    var url = type == "update" ? "/device/update" : "/device/add";
-
-    model.attributes = JSON.stringify(model.attributes);
-    var deviceUser = new DeviceUser();
-    deviceUser.device = model;
-    deviceUser.id = +this.cookieService.get("CurrentUser");
-    var body = JSON.stringify(deviceUser);
-
-    this.http.post(this.BaseURI + url, body, {
+    var newModel = model;
+    newModel.attributes = JSON.stringify(newModel.attributes);
+    var body = JSON.stringify(newModel);
+    this.http.post(this.BaseURI + '/device/update', body, {
       headers
-
     }).subscribe((res: any) => {
-
       let dev = this.Devices.find(obj => obj.uniqueid == res.uniqueid);
-
-      if (dev != null && type == "update") {
-        let index = this.Devices.indexOf(dev);
-        this.Devices[index] = res;
-      }
-      else if (dev == null) {
-        this.Devices.push(res)
-      }
+      let index = this.Devices.indexOf(dev);
+      this.Devices[index] = res;
     });
 
-  }
-
-  removeDevice(device: Device) {
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-    console.log(device);
-    this.http.post(this.BaseURI + "/device/remove", device.id, {
-      headers
-
-    }).subscribe(
-      (res: any) => {
-
-      },
-      err => {
-        if(err.status == 200)
-          var index = this.Devices.indexOf(device);
-          this.Devices.splice(index);
-      }
-    );
   }
 
 }

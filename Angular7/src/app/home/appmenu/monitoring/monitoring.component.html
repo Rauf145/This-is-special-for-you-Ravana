@@ -25,7 +25,7 @@
         Fifth
       </button>
     </div>
-    <form #form='ngForm' autocomplete="off" (ngSubmit)="UpdateDevice(form)">
+    <form #form='ngForm' autocomplete="off" (ngSubmit)="onSubmit(form)">
       <div class="custom-modal-body">
         <div class="row pb-1 mb-2 b-1 " style="border-bottom: 1px solid rgba(0,0,0,0.3)">
           <div class="col-xs-7">
@@ -166,7 +166,7 @@
         Fifth
       </button>
     </div>
-    <form #form='ngForm' autocomplete="off" (ngSubmit)="AddDevice(form)">
+    <form #form='ngForm' autocomplete="off" (ngSubmit)="onSubmit(form)">
       <div class="custom-modal-body">
         <div class="row pb-1 mb-2 b-1 " style="border-bottom: 1px solid rgba(0,0,0,0.3)">
           <div class="col-xs-7">
@@ -275,8 +275,6 @@
 
 <aside class="main-sidebar">
   <section class="sidebar">
-    <ul class="sidebar-menu tree" data-widget="tree">
-      <li class="treeview">
         <div class="btn-group left-buttons" role="group">
           <button type="button" class="btn btn-sm sortByName" data-toggle="tooltip" data-placement="bottom"
             title="Sort By Name"><i class="fas fa-sort-alpha-down"></i></button>
@@ -287,44 +285,24 @@
           <button type="button" class="btn btn-sm accessibleList" data-toggle="tooltip" data-placement="bottom"
             title="Add to all accessibles"><i class="fas fa-bars"></i></button>
         </div>
-        <a><i class="icon ion-md-locate"></i><span>Devices</span><span class="pull-right-container"><i
-              class="fa fa-angle-left pull-right"></i></span></a>
-        <ul class="treeview-menu device" style="display: none;">
-          <li *ngFor="let dev of getDevices()" class="active">
-            <div class="d-flex align-items-center border-bottom">
-              <button class="btn btn-none">
-                <i class="fas fa-chevron-down"></i></button><button (mouseenter)="deviceHover(dev)"
-                (mouseleave)="deviceHoverOut(dev)" class="btn btn-none d-flex align-items-center plate-button"
-                style="padding-left: 0px;padding-right: 0px;">
-                <i class="icon ion-md-car" style="margin-right: 5px;"></i><span
-                  class="plate ml-2">{{dev.name}}</span></button><button (click)="onSelect(dev)" class="btn btn-none"
-                style="padding-left: 7px;padding-right: 7px;">
-                <i class="icon ion-md-locate"
-                  [ngClass]="{'green': CurDevice() != null && dev == CurDevice()}"></i></button><button
-                class="btn btn-none" style="padding-left: 3px;padding-right: 3px;">
-                <i class="icon ion-md-remove"
-                  [ngClass]="dev.attributes == null || dev.attributes.input == null || dev.attributes.input == 0 ? 'red' : dev.attributes.input == 1 ? 'green' : 'grey' "
-                  data-toggle="tooltip" data-placement="bottom"
-                  title="{{dev.attributes == null || dev.attributes.input == null ? 'No signal ': dev.attributes.input}}">
-                </i></button><button class="btn btn-none" style="padding-left: 5px;padding-right: 3px;">
-                <i class="icon ion-md-pause"
-                  [ngClass]="dev.attributes == null || dev.attributes.sat == null || dev.attributes.sat <= 0 ? 'gray' : dev.attributes.sat == 1 ? 'red' : dev.attributes.sat > 1 && dev.attributes.sat < 5 ? 'yellow' : 'green' "
-                  data-toggle="tooltip" data-placement="bottom"
-                  title="{{dev.attributes == null || dev.attributes.sat == null ? 'No signal ': dev.attributes.sat}}"></i></button><button
-                class="btn btn-none" style="padding-left: 6px;padding-right: 3px;">
-                <i class="icon ion-md-radio success"></i></button><button
-                [ngClass]="{'btn':true, 'btn-none':true, 'arrow_dropdown':true}" (click)="click(dev)"
-                style="padding-left: 0px;padding-right: 3px;">
-                <!-- <button class="btn btn-none arrow_dropdown"> -->
+        <ul class="device">
+          <li *ngFor="let dev of getDevices()">
+            <div class="main-grid">
+              <button class="btn btn-none" style="padding-left: 0px;margin-left: 0px;"><i class="fas fa-chevron-down"></i></button>
+              <button (mouseenter)="deviceHover(dev)" (mouseleave)="deviceHoverOut(dev)" class="btn btn-none d-flex align-items-center plate-button" style="padding-left: 0px;padding-right: 0px;"><i class="icon ion-md-car" style="margin-right: 5px;"></i><span *ngIf="checkLength(dev)" class="plate ml-2">{{dev.name}}</span><span *ngIf="!checkLength(dev)" class="plate ml-2">{{dev.name.substring(0,8)}}</span></button>
+              <button (click)="onSelect(dev)" class="btn btn-none" style="padding-left: 7px;padding-right: 7px;"><i class="icon ion-md-locate" [ngClass]="{'green': CurDevice() != null && dev == CurDevice()}"></i></button>
+              <button class="btn btn-none" style="padding-left: 3px;padding-right: 3px;"> <i class="icon ion-md-remove" [ngClass]="dev.attributes == null || dev.attributes.input == null || dev.attributes.input == 0 ? 'red' : dev.attributes.input == 1 ? 'green' : 'grey' "data-toggle="tooltip" data-placement="bottom"title="{{dev.attributes == null || dev.attributes.input == null ? 'No signal ': dev.attributes.input}}"></i></button>
+              <button class="btn btn-none" style="padding-left: 5px;padding-right: 3px;"><i class="icon ion-md-pause" [ngClass]="dev.attributes == null || dev.attributes.sat == null || dev.attributes.sat <= 0 ? 'gray' : dev.attributes.sat == 1 ? 'red' : dev.attributes.sat > 1 && dev.attributes.sat < 5 ? 'yellow' : 'green' " data-toggle="tooltip" data-placement="bottom" title="{{dev.attributes == null || dev.attributes.sat == null ? 'No signal ': dev.attributes.sat}}"></i></button>
+              <button class="btn btn-none" style="padding-left: 6px;padding-right: 3px;"> <i class="icon ion-md-radio success"></i></button>
+              <button [ngClass]="{'btn':true, 'btn-none':true, 'arrow_dropdown':true}" (click)="click(dev)" style="padding-left: 0px;padding-right: 3px;"> 
                 <svg style="padding-left: 5px;padding-right: 3px;width: 27px;padding-top: 6px;" viewBox="0 0 512 512"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M256 48C141.125 48 48 141.125 48 256s93.125 208 208 208 208-93.125 208-208S370.875 48 256 48zm0 272l-96-96h192l-96 96z">
                   </path>
-                </svg></button>
-                <button (click)="remove(dev)" class="btn btn-none" style="padding-left: 0px;padding-right: 3px;">
-                <i class="icon ion-md-close danger"></i>
+                </svg>
               </button>
+              <button class="btn btn-none" style="padding-left: 0px;padding-right: 3px;"><i class="icon ion-md-close danger"></i></button>
             </div>
             <div (mouseenter)="deviceHover(dev)" (mouseleave)="deviceHoverOut(dev)" class="custom-nav-item-collapse"
               *ngIf="hover && CurrentDevice == dev">
@@ -459,7 +437,5 @@
             </div>
           </li>
         </ul>
-      </li>
-    </ul>
   </section>
 </aside>

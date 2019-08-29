@@ -13,7 +13,7 @@ export class UserService {
   public user = null;
 
   constructor(private fb: FormBuilder, private http: HttpClient, private cookieService: CookieService) { }
-  readonly BaseURI = 'https://localhost:44374/api';
+  readonly BaseURI = 'http://207.180.214.149:5000/api';
 
   formModel = this.fb.group({
     UserName: ['', Validators.required],
