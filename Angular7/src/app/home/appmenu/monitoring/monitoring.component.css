@@ -20,9 +20,13 @@
     overflow-y: visible;
   }
   .device{
+    list-style-type: none;
     color: white;
   }
-  
+  .device li
+  {
+    list-style-type: none;
+  }
   .sidebar {
     overflow: hidden;
   }
@@ -574,4 +578,9 @@
   .col-xs-6 .div
   {
     margin: 5px 0;
+  }
+  .main-grid
+  {
+    display: grid;
+    grid-template-columns: 10% 30% 10% 10% 10% 10% 10% 10%;
   }

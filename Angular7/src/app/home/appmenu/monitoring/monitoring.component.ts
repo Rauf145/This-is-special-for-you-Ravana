@@ -47,24 +47,23 @@ export class MonitoringComponent implements OnInit {
 
   }
 
+  checkLength(device)
+  {
+    if(device.name.length<9)
+      return true;
+    else
+      return false;  
+  }
 
-  UpdateDevice(form) {
+  onSubmit(form) {
     if (this.modal.model != null) {
       for (let key of Object.keys(form.value)) {
         if (this.modal.model[key] != form.value[key] && form.value[key] != null && form.value[key] != "")
           this.modal.model[key] = form.value[key];
       }
-      this.service.updateDevice(this.modal.model);
-
+      this.service.updateDevice(this.modal.model)
     }
-    console.log("test");
     this.modal.closeModal();
-  }
-
-  AddDevice(form) {
-    this.service.updateDevice(form.value, "add")
-    this.modal.closeAddModal();
-    console.log("test2");
   }
 
   ResetMiliageMoto() {
@@ -75,11 +74,6 @@ export class MonitoringComponent implements OnInit {
   click(device) {
     this.CurrentDevice = device;
     this.dropdown = !this.dropdown;
-  }
-
-  remove(device){
-    console.log(device);
-    this.service.removeDevice(device);
   }
 
   deviceHover(device) {
@@ -102,29 +96,29 @@ export class MonitoringComponent implements OnInit {
     // console.log(this.tile2lat(Math.floor((100003 + (256)) / 256), 18))
     // this.service.Map.setView([39.17691709496078, 45.4559326171875], 18)
 
-    let d = this.getDistanceFromLatLonInKm(42.0716996794, 44.5243410194, 42.0716996794, 50.7096437529)
+    let d =this.getDistanceFromLatLonInKm(42.0716996794, 44.5243410194, 42.0716996794, 50.7096437529)
     console.log(d);
     // this.service.Map.setView(new L.LatLng(57.733484833831575, 11.953125), 15)
     // let marker = new L.Marker(new L.LatLng(57.733484833831575, 11.953125), { icon: this.service.greenIcon }).addTo(this.service.Map);
   }
 
 
-  getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+  getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
     var R = 6371; // Radius of the earth in km
-    var dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
-    var dLon = this.deg2rad(lon2 - lon1);
+    var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
+    var dLon = this.deg2rad(lon2-lon1);
     var a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
       Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
-      Math.sin(dLon / 2) * Math.sin(dLon / 2)
+      Math.sin(dLon/2) * Math.sin(dLon/2)
       ;
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     var d = R * c; // Distance in km
     return d;
   }
 
   deg2rad(deg) {
-    return deg * (Math.PI / 180)
+    return deg * (Math.PI/180)
   }
 
   deviceHoverOut(device) {
