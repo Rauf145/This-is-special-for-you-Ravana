@@ -25,6 +25,7 @@ import { TracksComponent } from './home/appmenu/tracks/tracks.component';
 import { ReportsComponent } from './home/appmenu/reports/reports.component';
 import { MessagesComponent } from './home/appmenu/messages/messages.component';
 import { DriversComponent } from './home/appmenu/drivers/drivers.component';
+import { UsersComponent } from './home/appmenu/users/users.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { DriversComponent } from './home/appmenu/drivers/drivers.component';
     ReportsComponent,
     MessagesComponent,
     DriversComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

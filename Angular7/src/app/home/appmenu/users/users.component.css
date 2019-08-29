@@ -1,0 +1,224 @@
+.main-users
+{
+    margin: 0;
+    padding: 0;
+}
+.users-main
+{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 25% 75%;
+    margin: 10px 0;
+}
+.users-main .btn-sm
+{
+    color: white;
+    background-color: #0070BE;
+    height: 30px;
+    padding: 4px 10px;
+    margin: 0 5px;
+    font-size: 13px;
+}
+.users-main .btn-sm:hover
+{
+    background-color: #0C4C78;
+}
+.search { 
+    position: relative; 
+}
+.search input { 
+    text-indent: 30px;
+    height: 30px;
+    width: 95%;
+}
+.search input:focus { outline: none;}
+.search .fa-search { 
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  font-size: 15px;
+}
+.modal-header-custom {
+    background-color: #009BF1;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px 0;
+    position: relative;
+  }
+  
+  .modal-title-custom {
+    font-size: 15px;
+    font-weight: 400;
+  }
+  
+  .modal-close-custom {
+    position: absolute;
+    right: 10px;
+    transform: translate(0%,-50%);
+    top: calc(50% - 2px);
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+  
+  .btn-modal-custom{
+    border-bottom: 3px solid transparent;
+    font-size: 14px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  
+  .btn-modal-custom:focus {
+    border-bottom: 3px solid black;
+    box-shadow: none !important;
+  }
+  
+  .input-custom {
+    max-width: 250px;
+    /* height: 36px !important; */
+  }
+  
+  .modal-form-label {
+    font-weight: 400 !important;
+  }
+  
+  @media screen and (min-width: 992px){
+    .modal-lg {
+        min-width: 930px;
+    }
+  }
+  .sidebar{
+    overflow: visible !important;
+  }
+  
+  .custom-modal-wrapper {
+    position: absolute;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 9999;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  @media screen and (min-width:768px){
+    .custom-modal-wrapper {
+      padding: 0 140px
+    }
+  }
+  
+  .custom-modal {
+    background-color: #fff !important;
+    width: 100%;
+    z-index: 999999999999;
+  }
+  
+  .custom-modal-header {
+    background-color: #009BF1;
+    color: #fff;
+    text-align: center;
+    padding: 6px 0;
+    position: relative;
+  }
+  
+  .custom-modal-close {
+    position: absolute;
+    right: 10px;
+  }
+  
+  .custom-modal-tabs {
+    padding: 10px;
+    border-bottom: 1px solid #b1b1b1;
+  }
+  
+  .custom-modal-tabs>.modal-tab {
+    cursor: pointer;
+    background-color: #F0F0F0;
+    border-bottom: 3px solid transparent;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .custom-modal-body {
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .custom-modal-action .btn-secondary
+  {
+    background-color: #DEDEDE;
+    color: #004A95;
+  }
+  .custom-modal-action .btn-secondary:hover
+  {
+    background-color: #204E7B;
+    color: white;
+  }
+  .custom-modal-action .btn-primary
+  {
+    margin-left: 10px;
+  }
+  .custom-modal-action .btn-default
+  {
+    margin-left: 450px;
+    color: #0073C2;
+    background-color: white;
+  }
+  .custom-modal-action .btn-default:hover
+  {
+    background-color: lightgray;
+  }
+  .custom-modal-action .btn-primary:hover
+  {
+    background-color: #004BB1;
+  }
+
+  .new-user-info
+  {
+    display: grid;
+    grid-template-columns: auto;
+    width: 60%;
+    margin: 0 200px;
+  }
+  .new-user-name, .new-user-password, .new-user-confirm-password, .new-user-main-mask, .new-user-creator, .new-user-account, .new-user-measure-system, .new-user-member, .new-user-passwordd,  .new-user-sms, .new-user-turnon, .new-user-settings
+  {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin: 5px 0;
+  }
+  .new-user-info label
+  {
+    color: #3E3E3E;
+    font-weight: 500;
+    text-align: left;
+  }
+  .new-user-info input:focus
+  {
+   outline: none;
+  }
+  .new-user-special-areas
+  {
+    display: grid;
+    grid-template-columns: auto;
+    margin: 5px 0;
+  }
+  #require
+  {
+    color: red;
+  }
+  .user-buttons
+  {
+      margin: 10px 0;
+  }
+  .user-buttons .btn-primary
+  {
+      margin: 0 3px;
+      font-size: 13px;
+  }
+  .user-buttons .btn-primary:hover, .btn-primary:focus
+  {
+     color: white;
+     background-color: #242B30;
+  }
