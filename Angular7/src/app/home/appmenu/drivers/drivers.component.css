@@ -1,0 +1,259 @@
+.main-drivers
+{
+    margin: 0;
+    padding: 0;
+}
+.driver-buttons
+{
+    text-align: center;
+    width: 100%;
+    margin: 10px 0;
+}
+.driver-buttons .btn-sm
+{
+    margin: 2px;
+    border: 0.5px solid lightgray;
+    color: #0083DD;
+    background-color: white;
+    padding: 5px 15px;
+}
+.driver-buttons .btn-sm:hover
+{
+    background-color: #E0E0E0;
+}
+.driver-buttons .btn-sm:focus
+{
+   outline: none;
+}
+.drivers-main
+{
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto auto auto;
+}
+.drivers-main .btn-sm
+{
+    color: white;
+    background-color: #0070BE;
+    height: 30px;
+    padding: 4px 10px;
+    margin: 0 5px;
+}
+.drivers-main .btn-sm:hover
+{
+    background-color: #0C4C78;
+}
+.driver-select
+{
+    height: 30px;
+    margin-right: 5px;
+}
+.search { 
+    position: relative; 
+    width: 60%;
+}
+.search input { text-indent: 30px;}
+.search input:focus { outline: none;}
+.search .fa-search { 
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  font-size: 15px;
+}
+.modal-header-custom {
+    background-color: #009BF1;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px 0;
+    position: relative;
+  }
+  
+  .modal-title-custom {
+    font-size: 15px;
+    font-weight: 400;
+  }
+  
+  .modal-close-custom {
+    position: absolute;
+    right: 10px;
+    transform: translate(0%,-50%);
+    top: calc(50% - 2px);
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+  
+  .btn-modal-custom{
+    border-bottom: 3px solid transparent;
+    font-size: 14px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  
+  .btn-modal-custom:focus {
+    border-bottom: 3px solid black;
+    box-shadow: none !important;
+  }
+  
+  .input-custom {
+    max-width: 250px;
+    /* height: 36px !important; */
+  }
+  
+  .modal-form-label {
+    font-weight: 400 !important;
+  }
+  
+  @media screen and (min-width: 992px){
+    .modal-lg {
+        min-width: 930px;
+    }
+  }
+  .sidebar{
+    overflow: visible !important;
+  }
+  
+  .custom-modal-wrapper {
+    position: absolute;
+    text-align: center;
+    height: 100vh;
+    width: 80%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 9999;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  @media screen and (min-width:768px){
+    .custom-modal-wrapper {
+      padding: 0 140px
+    }
+  }
+  
+  .custom-modal {
+    background-color: #fff !important;
+    width: 100%;
+    z-index: 999999999999;
+  }
+  
+  .custom-modal-header {
+    background-color: #009BF1;
+    color: #fff;
+    text-align: center;
+    padding: 6px 0;
+    position: relative;
+  }
+  
+  .custom-modal-close {
+    position: absolute;
+    right: 10px;
+  }
+  
+  .custom-modal-tabs {
+    padding: 10px;
+    border-bottom: 1px solid #b1b1b1;
+  }
+  
+  .custom-modal-tabs>.modal-tab {
+    cursor: pointer;
+    background-color: #F0F0F0;
+    border-bottom: 3px solid transparent;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .custom-modal-body {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+  }
+  .custom-modal-action .btn-secondary
+  {
+    background-color: #DEDEDE;
+    color: #004A95;
+  }
+  .custom-modal-action .btn-secondary:hover
+  {
+    background-color: #204E7B;
+    color: white;
+  }
+  .custom-modal-action .btn-primary
+  {
+    margin-left: 10px;
+  }
+  .custom-modal-action .btn-default
+  {
+    margin-left: 450px;
+    color: #0073C2;
+    background-color: white;
+  }
+  .custom-modal-action .btn-default:hover
+  {
+    background-color: lightgray;
+  }
+  .custom-modal-action .btn-primary:hover
+  {
+    background-color: #004BB1;
+  }
+
+  .new-driver-info
+  {
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .new-driver-name, .new-driver-code, .new-driver-expression, .new-driver-phone, .new-driver-mobile-key, .new-driver-special
+  {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin: 5px 0;
+  }
+  .new-driver-info label
+  {
+    color: #3E3E3E;
+    font-weight: 500;
+  }
+  .new-driver-info input
+  {
+    width: 90%;
+  }
+  .new-driver-info input:focus
+  {
+   outline: none;
+  }
+  .new-driver-special-areas
+  {
+    display: grid;
+    grid-template-columns: auto;
+    margin: 5px 0;
+  }
+  .new-driver-special-areas-inputs
+  {
+    display: grid;
+    grid-template-columns: 47% 47% 6%;
+    margin-left: 50px;
+  }
+  .new-driver-special-areas-inputs button
+  {
+    background-color: transparent;
+    border: none;
+  }
+  .new-driver-special-areas-inputs .fa-plus
+  {
+    color: green;
+  }
+  .new-driver-special-areas-inputs button:focus
+  {
+    outline: none;
+  }
+  .new-driver-img img 
+  {
+    margin: 50px 0 0 50px;
+    width: 70px;
+    height: 70px;
+  }
+  #require
+  {
+    color: red;
+  }

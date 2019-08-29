@@ -1,0 +1,216 @@
+<aside class="main-sidebar">
+
+  <div class="main-tracks">
+
+    <form>
+
+      <div class="tracks-unit">
+        <label class="unit-label">Unit</label>
+        <select name="units">
+          <option value="x">99 JF 123</option>
+          <option value="y">50 BM 980</option>
+          <option value="z">90 FG 521</option>
+        </select>
+      </div>
+
+      <div class="tracks-color">
+        <label class="color-label">Color</label>
+        <select name="colors" (change)="onItemChange($event.target.value)">
+          <option value="trips" selected="selected">By trips</option>
+          <option value="single">Single</option>
+          <option value="speed">By speed</option>
+        </select>
+      </div>
+
+
+      <div *ngIf="this.isSingle" class="color-content">
+        <input type="radio" name="color" value="" id="blue" style="background-color: blue">
+        <input type="radio" name="color" value="" id="green" style="background-color: #106900">
+        <input type="radio" name="color" value="" id="sky-blue" style="background-color: #14BFCD">
+        <input type="radio" name="color" value="" id="blue1" style="background-color: #094EBE">
+        <input type="radio" name="color" value="" id="blue2" style="background-color: #043789">
+        <input type="radio" name="color" value="" id="purple" style="background-color: #5C01BD">
+        <input type="radio" name="color" value="" id="pink" style="background-color: #D807AF">
+        <input type="radio" name="color" value="" id="red" style="background-color: #E90505">
+        <input type="radio" name="color" value="" id="orange" style="background-color: #AB5300">
+        <input type="radio" name="color" value="" id="yellow" style="background-color: #D8D514">
+      </div>
+
+      <div *ngIf="this.isSpeed" class="speed-content">
+        <label class="speed-label">Speed</label>
+        <label class="color-label">Color</label>
+        <p>0 .. 39</p>
+        <div style="background-color: #14BFCD"></div>
+        <p>40 .. 59</p>
+        <div style="background-color: #094EBE"></div>
+        <p>60 .. 89</p>
+        <div style="background-color: #043789"></div>
+        <p>90 .. 119</p>
+        <div style="background-color: #5C01BD"></div>
+        <p>120 .. -</p>
+        <div style="background-color: #E90505"></div>
+      </div>
+
+      <div class="tracks-line">
+        <label class="line-label">Line thickness</label>
+        <select name="lines">
+          <option value="points">Points only</option>
+          <option value="1">1px</option>
+          <option value="2">2px</option>
+          <option value="3">3px</option>
+          <option value="4">4px</option>
+          <option value="5">5px</option>
+          <option value="6" selected="selected">6px</option>
+          <option value="7">7px</option>
+          <option value="8">8px</option>
+          <option value="9">9px</option>
+          <option value="10">10px</option>
+          <option value="11">11px</option>
+          <option value="12">12px</option>
+          <option value="13">13px</option>
+          <option value="14">14px</option>
+          <option value="15">15px</option>
+        </select>
+      </div>
+
+      <div class="tracks-icons">
+        <input type="checkbox" name="icons" id="checkbox1" data-toggle="tooltip" title="Numbering">
+        <input type="checkbox" name="icons" id="checkbox2" data-toggle="tooltip" title="Grouping">
+        <input type="checkbox" name="icons" id="checkbox3" data-toggle="tooltip" title="Fuel Thefts">
+        <input type="checkbox" name="icons" id="checkbox4" data-toggle="tooltip" title="Speeding">
+        <input type="checkbox" name="icons" id="checkbox5" data-toggle="tooltip" title="Fuel Fillings">
+        <input type="checkbox" name="icons" id="checkbox6" data-toggle="tooltip" title="Events">
+        <input type="checkbox" name="icons" id="checkbox7" data-toggle="tooltip" title="Images">
+        <input type="checkbox" name="icons" id="checkbox8" data-toggle="tooltip" title="Video">
+        <input type="checkbox" name="icons" id="checkbox9" data-toggle="tooltip" title="Parking">
+        <input type="checkbox" name="icons" id="checkbox10" data-toggle="tooltip" title="Stop">
+        <input type="checkbox" name="icons" id="checkbox11" data-toggle="tooltip" title="Initial and final positions">
+      </div>
+
+      <div class="tracks-checkboxes">
+        <label>Show annotations:</label>
+        <input type="checkbox" name="checkbox" id="show-annotations">
+        <label>Add trip detector:</label>
+        <input type="checkbox" name="checkbox" id="add-trip-detector">
+      </div>
+
+      <div class="time-buttons">
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-primary"
+            (click)="this.isToday = true; this.isYesterday = false; this.isWeek = false; this.isMonth = false"
+            data-toggle="tooltip" title="For today from 00:00 to now">Today</button>
+          <button type="button" class="btn btn-primary"
+            (click)="this.isYesterday = true; this.isToday = false; this.isWeek = false; this.isMonth = false"
+            data-toggle="tooltip" title="For yesterday from 00:00 to 23:59">Yesterday</button>
+          <button type="button" class="btn btn-primary"
+            (click)="this.isWeek = true; this.isToday = false; this.isYesterday = false; this.isMonth = false"
+            data-toggle="tooltip" title="For previous week">Week</button>
+          <button type="button" class="btn btn-primary"
+            (click)="this.isMonth = true; this.isToday = false; this.isWeek = false; this.isYesterday = false"
+            data-toggle="tooltip" title="For previous month">Month</button>
+        </div>
+      </div>
+
+      <div class="times-change">
+        <div class="today" *ngIf="this.isToday">
+          <label class="today-interval">Interval</label>
+          <select name="today-interval" style="margin-bottom: 7px;">
+            <option value="today-specified" selected="selected">Specified interval</option>
+            <option value="today-starts">Starts from until today</option>
+            <option value="today-previous">For previous</option>
+          </select>
+          <label class="today-from">From</label>
+          <input type="date" id="today-from-date" value="2019 August 19 00:00" style="margin-bottom: 7px;">
+          <label class="today-to">To</label>
+          <input type="date" id="today-to-date" value="2019 August 19 23.59" style="margin-bottom: 7px;">
+        </div>
+
+        <div class="yesterday" *ngIf="this.isYesterday">
+          <div class="yesterday-interval-div">
+            <label class="yesterday-interval-label">Interval</label>
+            <select name="yesterday-interval" style="margin-bottom: 7px;">
+              <option value="yesterday-previous" selected="selected">For previous</option>
+              <option value="yesterday-specified">Specified interval</option>
+              <option value="yesterday-starts">Starts from until today</option>
+            </select>
+          </div>
+          <div class="yesterday-range-div">
+            <input type="number" id="yesterday-range-number" name="" min="0">
+            <select name="yesterday-interval"  style="margin-bottom: 2px;">
+              <option value="yesterday-minutes">minutes</option>
+              <option value="yesterday-hours">hours</option>
+              <option value="yesterday-days" selected="selected">days</option>
+              <option value="yesterday-weeks">weeks</option>
+              <option value="yesterday-months">months</option>
+              <option value="yesterday-years">years</option>
+            </select>
+          </div>
+          <div class="including-checkbox">
+            <input type="checkbox" name="checkbox" class="including-current">
+            <label class="including-current-label">Including current</label>
+          </div>
+        </div>
+
+
+        <div class="week" *ngIf="this.isWeek">
+          <div class="week-interval-div">
+            <label class="week-interval-label">Interval</label>
+            <select name="week-interval" style="margin-bottom: 7px;">
+              <option value="week-previous" selected="selected">For previous</option>
+              <option value="week-specified">Specified interval</option>
+              <option value="week-starts">Starts from until today</option>
+            </select>
+          </div>
+          <div class="week-range-div">
+            <input type="number" id="week-range-number" name="" min="0">
+            <select name="week-interval" style="margin-bottom: 2px;">
+              <option value="week-minutes">minutes</option>
+              <option value="week-hours">hours</option>
+              <option value="week-days">days</option>
+              <option value="week-weeks" selected="selected">weeks</option>
+              <option value="week-months">months</option>
+              <option value="week-years">years</option>
+            </select>
+          </div>
+          <div class="including-checkbox">
+            <input type="checkbox" name="checkbox" class="including-current">
+            <label class="including-current-label">Including current</label>
+          </div>
+        </div>
+
+        <div class="month" *ngIf="this.isMonth">
+          <div class="month-interval-div">
+            <label class="month-interval-label">Interval</label>
+            <select name="month-interval"  style="margin-bottom: 7px;">
+              <option value="month-previous" selected="selected">For previous</option>
+              <option value="month-specified">Specified interval</option>
+              <option value="month-starts">Starts from until today</option>
+            </select>
+          </div>
+          <div class="month-range-div">
+            <input type="number" id="month-range-number" name="" min="0">
+            <select name="month-interval" style="margin-bottom: 2px;">
+              <option value="month-minutes">minutes</option>
+              <option value="month-hours">hours</option>
+              <option value="month-days">days</option>
+              <option value="month-weeks">weeks</option>
+              <option value="month-months" selected="selected">months</option>
+              <option value="month-years">years</option>
+            </select>
+          </div>
+          <div class="including-checkbox">
+            <input type="checkbox" name="checkbox" class="including-current">
+            <label class="including-current-label">Including current</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons-submit">
+        <button type="button" class="show-track">Show Track</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</aside>

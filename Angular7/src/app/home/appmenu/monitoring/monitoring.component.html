@@ -1,0 +1,465 @@
+<script src="../../../assets/dist/js/adminlte.min.js"></script>
+<div class="custom-modal-wrapper" id="custom-modal" *ngIf="modal.open">
+  <div class="custom-modal">
+    <div class="custom-modal-header">
+      Modal title
+      <button class="btn btn-none custom-modal-close modal-close" style="padding: 0;color: #fff;"
+        (click)="modal.closeModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="custom-modal-tabs">
+      <button class="btn btn-none modal-tab">
+        General
+      </button>
+      <button class="btn btn-none modal-tab">
+        Second
+      </button>
+      <button class="btn btn-none modal-tab">
+        Third
+      </button>
+      <button class="btn btn-none modal-tab">
+        Fourth
+      </button>
+      <button class="btn btn-none modal-tab">
+        Fifth
+      </button>
+    </div>
+    <form #form='ngForm' autocomplete="off" (ngSubmit)="UpdateDevice(form)">
+      <div class="custom-modal-body">
+        <div class="row pb-1 mb-2 b-1 " style="border-bottom: 1px solid rgba(0,0,0,0.3)">
+          <div class="col-xs-7">
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Name:</label>
+              <input type="text" class="form-control input-custom" placeholder="{{modal.model.name}}" name="name"
+                ngModel>
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Device type:</label>
+              <input type="text" class="form-control input-custom"
+                placeholder="{{modal.model.model == null ? 'No model' : modal.model.model}}"
+                value="{{modal.model.model}}" name="model" ngModel>
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Server address</label>
+              <input type="text" class="form-control input-custom" value="207.180.214.149" disabled="">
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Unique ID</label>
+              <input type="text" class="form-control input-custom"
+                placeholder="{{modal.model.uniqueid == null ? 'No model' : modal.model.uniqueid}}"
+                value="{{modal.model.uniqueid}}" name="uniqueid" ngModel>
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Phone number</label>
+              <input type="text" class="form-control input-custom"
+                placeholder="{{modal.model.phone == null ? 'No phone number' : modal.model.phone}}"
+                value="{{modal.model.phone}}" name="phone" ngModel>
+              <input type="text" class="form-control input-custom" style="position: absolute;right: -245px">
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Last position</label>
+              <input type="text" class="form-control input-custom" value="none">
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Creator</label>
+              <input type="text" class="form-control input-custom" disabled="">
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Account</label>
+              <input type="text" class="form-control input-custom" disabled=""
+                placeholder="{{modal.model.contact == null ? 'No phone number' : modal.model.contact}}"
+                value="{{modal.model.contact}}" name="contact" ngModel>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+            <label class="modal-form-label">Mileage counter</label>
+            <select type="text" class="form-control input-custom pt-0 pb-0 pl-1 pr-1">
+              <option value="0">GPS</option>
+              <option value="1">Mileage sensor</option>
+              <option value="2">Relative odometer</option>
+              <option value="3">GPS + engine ignition sensor</option>
+            </select>
+          </div>
+          <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+            <label class="modal-form-label">Engine hours counter</label>
+            <select type="text" class="form-control input-custom pt-0 pb-0 pl-1 pr-1">
+              <option value="16">Engine ignition sensor</option>
+              <option value="32">Absolute engine hours sensor</option>
+              <option value="64">Relative engine hours sensor</option>
+            </select>
+          </div>
+          <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+            <label class="modal-form-label">GPRS traffic counter</label>
+            <input (click)="ResetMiliageMoto()" type="button" class="form-control input-custom" value="Reset Counter">
+          </div>
+        </div>
+        <div class="col-xs-6" style="border-left: 1px solid rgba(0,0,0,0.3) ; ">
+          <div class="form-item d-flex justify-content-between mb-1">
+            <label class="modal-form-label">Current value: </label>
+            <div class="d-flex">
+              <input type="text" class="form-control input-custom" placeholder="{{modal.model.mileage}}" name="mileage"
+                ngModel>
+              <div style="min-width: 90px" class="ml-1">km <input type="checkbox"> Avto</div>
+            </div>
+          </div>
+          <div class="form-item d-flex justify-content-between mb-1">
+            <label class="modal-form-label">Current value: </label>
+            <div class="d-flex">
+              <input type="text" class="form-control input-custom" placeholder="{{modal.model.motoTime}}"
+                name="motoTime" ngModel>
+              <div style="min-width: 90px" class="ml-1">h <input type="checkbox"> Avto</div>
+            </div>
+          </div>
+          <div class="form-item d-flex justify-content-between mb-1">
+            <label class="modal-form-label">Current value</label>
+            <div class="d-flex">
+              <input type="text" class="form-control input-custom">
+              <div style="min-width: 90px" class="ml-1">km <input type="checkbox"> Avto</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="custom-modal-action d-flex justify-content-between" style="padding: 0 10px 10px 10px">
+        <button class="btn btn-secondary">
+          Export
+        </button>
+        <div>
+          <button class="btn btn-danger modal-close" (click)="modal.closeModal()">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Save changes
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="custom-modal-wrapper" id="custom-modal" *ngIf="modal.openAdd">
+  <div class="custom-modal">
+    <div class="custom-modal-header">
+      Modal title
+      <button class="btn btn-none custom-modal-close modal-close" style="padding: 0;color: #fff;"
+        (click)="modal.closeAddModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="custom-modal-tabs">
+      <button class="btn btn-none modal-tab">
+        General
+      </button>
+      <button class="btn btn-none modal-tab">
+        Second
+      </button>
+      <button class="btn btn-none modal-tab">
+        Third
+      </button>
+      <button class="btn btn-none modal-tab">
+        Fourth
+      </button>
+      <button class="btn btn-none modal-tab">
+        Fifth
+      </button>
+    </div>
+    <form #form='ngForm' autocomplete="off" (ngSubmit)="AddDevice(form)">
+      <div class="custom-modal-body">
+        <div class="row pb-1 mb-2 b-1 " style="border-bottom: 1px solid rgba(0,0,0,0.3)">
+          <div class="col-xs-7">
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Name:</label>
+              <input type="text" class="form-control input-custom" placeholder="10 XX 100" name="name" ngModel>
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Device type:</label>
+              <input type="text" class="form-control input-custom" placeholder="Device x" value="" name="model" ngModel>
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Server address</label>
+              <input type="text" class="form-control input-custom" value="207.180.214.149" disabled="">
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Unique ID</label>
+              <input type="text" class="form-control input-custom" placeholder="Unique ID" value="" name="uniqueid"
+                ngModel>
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Phone number</label>
+              <input type="text" class="form-control input-custom" placeholder="+994 5000000" value="Model x"
+                name="phone" ngModel>
+              <input type="text" class="form-control input-custom" style="position: absolute;right: -245px">
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Last position</label>
+              <input type="text" class="form-control input-custom" value="">
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Creator</label>
+              <input type="text" class="form-control input-custom" disabled="">
+            </div>
+            <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+              <label class="modal-form-label">Account</label>
+              <input type="text" class="form-control input-custom" disabled="" placeholder="Account" value=""
+                name="contact" ngModel>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+            <label class="modal-form-label">Mileage counter</label>
+            <select type="text" class="form-control input-custom pt-0 pb-0 pl-1 pr-1">
+              <option value="0">GPS</option>
+              <option value="1">Mileage sensor</option>
+              <option value="2">Relative odometer</option>
+              <option value="3">GPS + engine ignition sensor</option>
+            </select>
+          </div>
+          <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+            <label class="modal-form-label">Engine hours counter</label>
+            <select type="text" class="form-control input-custom pt-0 pb-0 pl-1 pr-1">
+              <option value="16">Engine ignition sensor</option>
+              <option value="32">Absolute engine hours sensor</option>
+              <option value="64">Relative engine hours sensor</option>
+            </select>
+          </div>
+          <div class="form-item d-flex justify-content-between mb-1 align-items-center">
+            <label class="modal-form-label">GPRS traffic counter</label>
+            <input type="button" class="form-control input-custom" value="Reset Counter">
+          </div>
+        </div>
+        <div class="col-xs-6" style="border-left: 1px solid rgba(0,0,0,0.3) ; ">
+          <div class="form-item d-flex justify-content-between mb-1">
+            <label class="modal-form-label">Current value: </label>
+            <div class="d-flex">
+              <input type="text" class="form-control input-custom" placeholder="" name="mileage" ngModel>
+              <div style="min-width: 90px" class="ml-1">km <input type="checkbox"> Avto</div>
+            </div>
+          </div>
+          <div class="form-item d-flex justify-content-between mb-1">
+            <label class="modal-form-label">Current value: </label>
+            <div class="d-flex">
+              <input type="text" class="form-control input-custom" placeholder="" name="motoTime" ngModel>
+              <div style="min-width: 90px" class="ml-1">h <input type="checkbox"> Avto</div>
+            </div>
+          </div>
+          <div class="form-item d-flex justify-content-between mb-1">
+            <label class="modal-form-label">Current value</label>
+            <div class="d-flex">
+              <input type="text" class="form-control input-custom">
+              <div style="min-width: 90px" class="ml-1">km <input type="checkbox"> Avto</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="custom-modal-action d-flex justify-content-between" style="padding: 0 10px 10px 10px">
+        <button class="btn btn-secondary">
+          Export
+        </button>
+        <div>
+          <button class="btn btn-danger modal-close" (click)="modal.closeAddModal()">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Add Device
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <ul class="sidebar-menu tree" data-widget="tree">
+      <li class="treeview">
+        <div class="btn-group left-buttons" role="group">
+          <button type="button" class="btn btn-sm sortByName" data-toggle="tooltip" data-placement="bottom"
+            title="Sort By Name"><i class="fas fa-sort-alpha-down"></i></button>
+          <button type="button" class="btn btn-sm viewGroup" data-toggle="tooltip" data-placement="bottom"
+            title="Group View"><i class="fas fa-layer-group"></i></button>
+          <button type="button" class="btn btn-sm addList" data-toggle="tooltip modal" data-placement="bottom"
+            title="Add to List" id="open_add_modal" (click)="modal.openAddModal()"><i class="fas fa-plus"></i></button>
+          <button type="button" class="btn btn-sm accessibleList" data-toggle="tooltip" data-placement="bottom"
+            title="Add to all accessibles"><i class="fas fa-bars"></i></button>
+        </div>
+        <a><i class="icon ion-md-locate"></i><span>Devices</span><span class="pull-right-container"><i
+              class="fa fa-angle-left pull-right"></i></span></a>
+        <ul class="treeview-menu device" style="display: none;">
+          <li *ngFor="let dev of getDevices()" class="active">
+            <div class="d-flex align-items-center border-bottom">
+              <button class="btn btn-none">
+                <i class="fas fa-chevron-down"></i></button><button (mouseenter)="deviceHover(dev)"
+                (mouseleave)="deviceHoverOut(dev)" class="btn btn-none d-flex align-items-center plate-button"
+                style="padding-left: 0px;padding-right: 0px;">
+                <i class="icon ion-md-car" style="margin-right: 5px;"></i><span
+                  class="plate ml-2">{{dev.name}}</span></button><button (click)="onSelect(dev)" class="btn btn-none"
+                style="padding-left: 7px;padding-right: 7px;">
+                <i class="icon ion-md-locate"
+                  [ngClass]="{'green': CurDevice() != null && dev == CurDevice()}"></i></button><button
+                class="btn btn-none" style="padding-left: 3px;padding-right: 3px;">
+                <i class="icon ion-md-remove"
+                  [ngClass]="dev.attributes == null || dev.attributes.input == null || dev.attributes.input == 0 ? 'red' : dev.attributes.input == 1 ? 'green' : 'grey' "
+                  data-toggle="tooltip" data-placement="bottom"
+                  title="{{dev.attributes == null || dev.attributes.input == null ? 'No signal ': dev.attributes.input}}">
+                </i></button><button class="btn btn-none" style="padding-left: 5px;padding-right: 3px;">
+                <i class="icon ion-md-pause"
+                  [ngClass]="dev.attributes == null || dev.attributes.sat == null || dev.attributes.sat <= 0 ? 'gray' : dev.attributes.sat == 1 ? 'red' : dev.attributes.sat > 1 && dev.attributes.sat < 5 ? 'yellow' : 'green' "
+                  data-toggle="tooltip" data-placement="bottom"
+                  title="{{dev.attributes == null || dev.attributes.sat == null ? 'No signal ': dev.attributes.sat}}"></i></button><button
+                class="btn btn-none" style="padding-left: 6px;padding-right: 3px;">
+                <i class="icon ion-md-radio success"></i></button><button
+                [ngClass]="{'btn':true, 'btn-none':true, 'arrow_dropdown':true}" (click)="click(dev)"
+                style="padding-left: 0px;padding-right: 3px;">
+                <!-- <button class="btn btn-none arrow_dropdown"> -->
+                <svg style="padding-left: 5px;padding-right: 3px;width: 27px;padding-top: 6px;" viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M256 48C141.125 48 48 141.125 48 256s93.125 208 208 208 208-93.125 208-208S370.875 48 256 48zm0 272l-96-96h192l-96 96z">
+                  </path>
+                </svg></button>
+                <button (click)="remove(dev)" class="btn btn-none" style="padding-left: 0px;padding-right: 3px;">
+                <i class="icon ion-md-close danger"></i>
+              </button>
+            </div>
+            <div (mouseenter)="deviceHover(dev)" (mouseleave)="deviceHoverOut(dev)" class="custom-nav-item-collapse"
+              *ngIf="hover && CurrentDevice == dev">
+              <div class="card" style="min-width: 600px">
+                <div class="card-body p-2">
+                  <div class="cart-title d-flex align-items-center justify-content-between border-bottom pb-1">
+                    <div>
+                      <span class="plate m-0 ml-2"></span>
+                    </div>
+                    <div class="card-time-info">
+                      <div>{{dev.lastUpdate}}</div>
+                      <div>{{dev.lastUpdate}}</div>
+                    </div>
+                  </div>
+                  <div class="mb-1 mt-1">
+                    <p class="p-0 m-0">{{dev.name}}</p>
+                  </div>
+                  <div class="row card-car">
+                    <div class="col-xs-3 text-center">
+                      <div class="border car-info-box h-100">
+                        30 km/h
+                      </div>
+                    </div>
+                    <div class="col-xs-3 text-center">
+                      <div class="border car-info-box h-100">
+                        {{dev.mileage}} kmh
+                      </div>
+                    </div>
+                    <div class="col-xs-3 text-center">
+                      <div class="border car-info-box h-100">
+                        {{dev.moto_time}}
+                      </div>
+                    </div>
+                    <div class="col-xs-3 text-center">
+                      <div class="border car-info-box flex-column">
+                        <div>78.1658465465</div>
+                        <div>78.1658465465</div>
+                      </div>
+                    </div>
+                  </div>
+                  <table class="table border card-car-table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th colspan="2">Connectivity settings:
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="width: 50%">
+                          <strong>zamok: </strong>
+                          {{dev.attributes == null || dev.attributes.input == null ? 'off ': 'on'}}
+                        </td>
+                        <td style="width: 50%" class="border-left">
+                          <strong>Temperature: </strong>18
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="table border card-car-table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th colspan="2">Connectivity settings:
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <strong>Device type: </strong>
+                          {{dev.model == null ? 'No model' : dev.model}}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>Unique ID: </strong>
+                          {{dev.uniqueid == null ? 'Error(No uniqueId)' : dev.uniqueid}}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>Phone: </strong>
+                          {{dev.phone == null ? 'No phone number' : dev.phone}}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="table border card-car-table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th colspan="2">Title</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td *ngIf="dev.attributes != null">
+                          <strong>Custom fields: </strong>
+                          <div style="overflow-y: scroll;">
+                            <div *ngFor="let entry of dev.attributes | keys">
+                              {{entry.key}}: {{entry.value}}
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="custom-dropdown-collapse" *ngIf="dropdown == true && dev == CurrentDevice">
+              <div class="custom-dropdown">
+                <button class="btn btn-none">
+                  <i class="icon ion-md-flag text-primary"></i>
+                </button>
+                <button class="btn btn-none">
+                  <i class="icon ion-md-help"></i>
+                </button>
+                <button class="btn btn-none">
+                  <i class="icon ion-md-videocam"></i>
+                </button>
+                <button class="btn btn-none" id="open_modal" data-toggle="modal" data-target="#object_info"
+                  (click)="modal.openModal(dev)">
+                  <i class="icon ion-md-hammer"></i>
+                </button>
+                <button class="btn btn-none">
+                  <i class="icon ion-md-menu"></i>
+                </button>
+                <button class="btn btn-none" s>
+                  <i class="icon ion-md-help"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</aside>

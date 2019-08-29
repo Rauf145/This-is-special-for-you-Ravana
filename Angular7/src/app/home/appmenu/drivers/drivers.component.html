@@ -1,0 +1,98 @@
+<script src="../../../assets/dist/js/adminlte.min.js"></script>
+<div class="custom-modal-wrapper" id="custom-modal" *ngIf="modal.openNewDriver">
+  <div class="custom-modal">
+    <div class="custom-modal-header">
+      New Driver
+      <button class="btn btn-none custom-modal-close modal-close" style="padding: 0;color: #fff;"
+        (click)="modal.closeNewDriverModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <form #form='ngForm' autocomplete="off">
+      <div class="custom-modal-body">
+        <div class="new-driver-img">
+          <label for="file-input">
+            <img src="../../../../assets/img/steering-wheel.png" />
+          </label>
+          <input id="file-input" type="file" style="display: none;">
+        </div>
+        <div class="new-driver-info">
+          <div class="new-driver-name">
+            <label><span id="require">*</span>Name</label>
+            <input type="text" required>
+          </div>
+          <div class="new-driver-code">
+            <label>Code</label>
+            <input type="text">
+          </div>
+          <div class="new-driver-expression">
+            <label>Expression</label>
+            <input type="text">
+          </div>
+          <div class="new-driver-phone">
+            <label>Phone Number</label>
+            <input type="text">
+          </div>
+          <div class="new-driver-mobile-key">
+            <label>Mobile Key</label>
+            <input type="text">
+          </div>
+          <div class="new-driver-special">
+            <label>Special</label>
+            <input type="checkbox">
+          </div>
+          <div class="new-driver-special-areas">
+            <label>Special areas</label>
+            <div class="new-driver-special-areas-inputs">
+              <input type="text">
+              <input type="text">
+              <button type="button"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="custom-modal-action d-flex justify-content-between" style="padding: 10px;">
+        <div class="modal-buttons">
+          <button class="btn btn-default modal-close" (click)="modal.closeNewDriverModal()">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            OK
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<aside class="main-sidebar">
+  <div class="main-drivers">
+
+    <form>
+      <div class="driver-buttons">
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-sm">Drivers</button>
+          <button type="button" class="btn btn-sm">Groups</button>
+        </div>
+      </div>
+      <div class="drivers-main">
+        <button type="button" (click)="modal.openNewDriverModal()" class="btn btn-sm"><i class="fas fa-plus"></i>
+          New</button>
+        <select name="driver-select" class="driver-select">
+          <option value="all" selected="selected">All</option>
+          <option value="property">Property</option>
+          <option value="source">Source</option>
+        </select>
+        <div class="search">
+          <span class="fa fa-search"></span>
+          <input placeholder="Search">
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+
+</aside>

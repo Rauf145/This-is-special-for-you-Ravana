@@ -1,0 +1,134 @@
+<aside class="main-sidebar">
+
+  <div class="main-messages">
+
+    <form>
+
+      <div class="tracks-unit">
+        <label class="unit-label">Unit</label>
+        <select name="units">
+          <option value="x">99 JF 123</option>
+          <option value="y">50 BM 980</option>
+          <option value="z">90 FG 521</option>
+        </select>
+      </div>
+
+      <div class="time-buttons">
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-primary"
+            (click)="this.isToday = true; this.isYesterday = false; this.isWeek = false; this.isMonth = false"
+            data-toggle="tooltip" title="For today from 00:00 to now">Today</button>
+          <button type="button" class="btn btn-primary"
+            (click)="this.isYesterday = true; this.isToday = false; this.isWeek = false; this.isMonth = false"
+            data-toggle="tooltip" title="For yesterday from 00:00 to 23:59">Yesterday</button>
+          <button type="button" class="btn btn-primary"
+            (click)="this.isWeek = true; this.isToday = false; this.isYesterday = false; this.isMonth = false"
+            data-toggle="tooltip" title="For previous week">Week</button>
+          <button type="button" class="btn btn-primary"
+            (click)="this.isMonth = true; this.isToday = false; this.isWeek = false; this.isYesterday = false"
+            data-toggle="tooltip" title="For previous month">Month</button>
+        </div>
+      </div>
+
+      <div class="times-change">
+        <div class="today" *ngIf="this.isToday">
+          <label class="today-interval">Interval</label>
+          <select name="today-interval" style="margin-bottom: 7px;">
+            <option value="today-specified" selected="selected">Specified interval</option>
+            <option value="today-starts">Starts from until today</option>
+            <option value="today-previous">For previous</option>
+          </select>
+          <label class="today-from">From</label>
+          <input type="date" id="today-from-date" value="2019 August 19 00:00" style="margin-bottom: 7px;">
+          <label class="today-to">To</label>
+          <input type="date" id="today-to-date" value="2019 August 19 23.59" style="margin-bottom: 7px;">
+        </div>
+
+        <div class="yesterday" *ngIf="this.isYesterday">
+          <div class="yesterday-interval-div">
+            <label class="yesterday-interval-label">Interval</label>
+            <select name="yesterday-interval" style="margin-bottom: 7px;">
+              <option value="yesterday-previous" selected="selected">For previous</option>
+              <option value="yesterday-specified">Specified interval</option>
+              <option value="yesterday-starts">Starts from until today</option>
+            </select>
+          </div>
+          <div class="yesterday-range-div">
+            <input type="number" id="yesterday-range-number" name="" min="0">
+            <select name="yesterday-interval"  style="margin-bottom: 2px;">
+              <option value="yesterday-minutes">minutes</option>
+              <option value="yesterday-hours">hours</option>
+              <option value="yesterday-days" selected="selected">days</option>
+              <option value="yesterday-weeks">weeks</option>
+              <option value="yesterday-months">months</option>
+              <option value="yesterday-years">years</option>
+            </select>
+          </div>
+          <div class="including-checkbox">
+            <input type="checkbox" name="checkbox" class="including-current">
+            <label class="including-current-label">Including current</label>
+          </div>
+        </div>
+
+        <div class="week" *ngIf="this.isWeek">
+          <div class="week-interval-div">
+            <label class="week-interval-label">Interval</label>
+            <select name="week-interval" style="margin-bottom: 7px;">
+              <option value="week-previous" selected="selected">For previous</option>
+              <option value="week-specified">Specified interval</option>
+              <option value="week-starts">Starts from until today</option>
+            </select>
+          </div>
+          <div class="week-range-div">
+            <input type="number" id="week-range-number" name="" min="0">
+            <select name="week-interval" style="margin-bottom: 2px;">
+              <option value="week-minutes">minutes</option>
+              <option value="week-hours">hours</option>
+              <option value="week-days">days</option>
+              <option value="week-weeks" selected="selected">weeks</option>
+              <option value="week-months">months</option>
+              <option value="week-years">years</option>
+            </select>
+          </div>
+          <div class="including-checkbox">
+            <input type="checkbox" name="checkbox" class="including-current">
+            <label class="including-current-label">Including current</label>
+          </div>
+        </div>
+
+        <div class="month" *ngIf="this.isMonth">
+          <div class="month-interval-div">
+            <label class="month-interval-label">Interval</label>
+            <select name="month-interval"  style="margin-bottom: 7px;">
+              <option value="month-previous" selected="selected">For previous</option>
+              <option value="month-specified">Specified interval</option>
+              <option value="month-starts">Starts from until today</option>
+            </select>
+          </div>
+          <div class="month-range-div">
+            <input type="number" id="month-range-number" name="" min="0">
+            <select name="month-interval" style="margin-bottom: 2px;">
+              <option value="month-minutes">minutes</option>
+              <option value="month-hours">hours</option>
+              <option value="month-days">days</option>
+              <option value="month-weeks">weeks</option>
+              <option value="month-months" selected="selected">months</option>
+              <option value="month-years">years</option>
+            </select>
+          </div>
+          <div class="including-checkbox">
+            <input type="checkbox" name="checkbox" class="including-current">
+            <label class="including-current-label">Including current</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons-submit">
+        <button type="button" class="show-track">Show Track</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</aside>

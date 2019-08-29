@@ -1,0 +1,260 @@
+.main-tracks
+{
+    padding: 10px;
+    margin: 10px;
+}
+.tracks-unit, .tracks-color, .tracks-line
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin: 7px 0;
+}
+.main-tracks label
+{
+    color: white;
+}
+.color-content
+{
+    margin: 3px;
+}
+.color-content input[type="radio"]
+{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-clip: content-box;
+    border: 0.5px solid #bbbbbb;
+    margin: 0 1px;
+}
+.color-content input[type="radio"]:checked {
+    content: url(../../../../assets/img/tick.png);
+  }
+  .speed-content
+  {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      margin-left: 70px;
+  }
+  .speed-content div
+  {
+    display: inline-block;
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+  }
+  .speed-content p
+  {
+      color: white;
+      font-weight: 300;
+  }
+  .tracks-icons 
+  {
+      margin-top: 10px;
+  }
+  .tracks-icons input[type="checkbox"]
+  {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-clip: content-box;
+    border: 1px solid #bbbbbb;
+    margin: 0 5px;
+    background-color: white;
+    color: darkgrey;
+  }
+  .tracks-checkboxes
+  {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      margin-top: 10px;
+  }
+  .tracks-checkboxes input[type="checkbox"]
+  {
+    width: 20px;
+    height: 20px;
+  }
+  .btn-group-sm
+{
+   display: grid;
+   grid-template-columns: auto auto auto auto;
+   text-align: center;
+}
+.btn-primary
+{
+    color: #02528D;
+    background-color: white;
+    border: 0.5px solid lightgray;
+}
+.btn-primary:hover
+{
+    color: white;
+    background-color: #1C415C;
+}
+.time-buttons
+{
+    margin: 5px 0;
+}
+.today
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+.dropdown li:hover 
+{
+    color: white;
+    background-color:#1C415C;
+}
+.buttons-submit
+{
+    margin-top: 10px;
+    margin-left: 70px;
+}
+.yesterday-interval-div, .week-interval-div, .month-interval-div
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+.main-reports label
+{
+    color: white;
+}
+.yesterday-range-div, .week-range-div, .month-range-div
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin-left: 70px;
+}
+#yesterday-range-number, #week-range-number, #month-range-number
+{
+    height: 20px;
+    margin-right: 5px;
+}
+.main-reports select
+{
+    height: 30px;
+}
+.including-checkbox
+{
+    margin-left: 120px;
+}
+.including-current
+{
+    background-color: white;
+}
+.including-current-label
+{
+    font-size: 13px;
+    color: lightgray;
+    font-weight: 300;
+}
+.buttons-submit
+{
+    margin-top: 10px;
+    margin-left: 130px;
+}
+.show-track
+{
+    color: white;
+    background-color: #3D82B5;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.show-track:hover
+{
+    background-color: #1D5D8C;
+}
+#checkbox1
+{
+    content: url('../../../../assets/img/icons/number.png');
+}
+#checkbox1:checked
+{
+    background-color: #C73E3E;
+}
+#checkbox2
+{
+    content: url('../../../../assets/img/icons/flag.png');
+}
+#checkbox2:checked
+{
+    background-color: #91DAD2;
+}
+#checkbox3
+{
+    content: url('../../../../assets/img/icons/fuelfilling.png');
+}
+#checkbox3:checked
+{
+    background-color: #BD2A31;
+}
+#checkbox4
+{
+    content: url('../../../../assets/img/icons/fuelfilling.png');
+}
+#checkbox4:checked
+{
+    background-color: #DD65C2;
+}
+#checkbox5
+{
+    content: url('../../../../assets/img/icons/fuelfilling.png');
+}
+#checkbox5:checked
+{
+    background-color: #518839;
+}
+#checkbox6
+{
+    content: url('../../../../assets/img/icons/flag.png');
+}
+#checkbox6:checked
+{
+    background-color: #3268B5;
+}
+#checkbox7
+{
+    content: url('../../../../assets/img/icons/images.png');
+}
+#checkbox7:checked
+{
+    background-color: #6CE9E3;
+}
+#checkbox8
+{
+    content: url('../../../../assets/img/icons/video.png');
+}
+#checkbox8:checked
+{
+    background-color: #6CE9E3;
+}
+#checkbox9
+{
+    content: url('../../../../assets/img/icons/parking.png');
+}
+#checkbox9:checked
+{
+    background-color: #4DA1D5;
+}
+#checkbox10
+{
+    content: url('../../../../assets/img/icons/stop.png');
+}
+#checkbox10:checked
+{
+    background-color: #DD1313;
+}
+#checkbox11
+{
+    content: url('../../../../assets/img/icons/arrow.png');
+}
+#checkbox11:checked
+{
+    background-color: #1344DD;
+}

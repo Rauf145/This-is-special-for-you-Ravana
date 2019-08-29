@@ -1,0 +1,69 @@
+<div class="hold-transition login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="../../index2.html"><b>ITS</b>Tracker</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+      <form #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
+        <div class="form-group has-feedback">
+          <input class="form-control" #UserName="ngModel" name="Login" [(ngModel)]="formModel.UserName" required>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control" #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" required>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="checkbox icheck">
+              <label>
+                <input type="checkbox"> Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat" [disabled]="form.invalid">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <div class="social-auth-links text-center">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+          Facebook</a>
+        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+          Google+</a>
+      </div>
+      <!-- /.social-auth-links -->
+
+      <a href="#">I forgot my password</a><br>
+      <a routerLink='/user/registration' class="text-center">Register a new membership</a>
+
+    </div>
+    <!-- /.login-box-body -->
+  </div>
+
+</div>
+
+
+
+<!-- <img src="/assets/img/single_user.png" class="mx-auto d-block">
+<form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+  <div class="form-group">
+    <label>Username</label>
+    <input class="form-control" #UserName="ngModel" name="Login" [(ngModel)]="formModel.UserName" required>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" required>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8 offset-md-2">
+      <button type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Login</button>
+    </div>
+  </div>
+</form> -->

@@ -1,0 +1,117 @@
+.main-reports
+{
+    padding: 10px;
+    margin: 10px;
+}
+.template-div, .element-div
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin-bottom: 5px;
+}
+.template-label, .element-label, .today-interval, .today-to, .today-from
+{
+    color: white;
+}
+.add-element
+{
+    margin-left: 70px;
+    margin-bottom: 10px;
+}
+.btn-group-sm
+{
+   display: grid;
+   grid-template-columns: auto auto auto auto;
+   text-align: center;
+}
+.btn-primary
+{
+    color: #02528D;
+    background-color: white;
+    border: 0.5px solid lightgray;
+}
+.btn-primary:hover
+{
+    color: white;
+    background-color: #1C415C;
+}
+.time-buttons
+{
+    margin-bottom: 10px;
+}
+.today
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+.dropdown li:hover 
+{
+    color: white;
+    background-color:#1C415C;
+}
+.buttons-submit
+{
+    margin-top: 10px;
+    margin-left: 70px;
+}
+.clear
+{
+    color: #003F6C;
+    background-color: white;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+}
+.clear:hover
+{
+    background-color: #C8CACB;
+}
+.execute
+{
+    color: white;
+    background-color: #3D82B5;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.execute:hover
+{
+    background-color: #1D5D8C;
+}
+.yesterday-interval-div, .weekly-interval-div, .monthly-interval-div
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+.main-reports label
+{
+    color: white;
+}
+.yesterday-range-div, .weekly-range-div, .monthly-range-div
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin-left: 70px;
+}
+#yesterday-range-number, #weekly-range-number, #monthly-range-number
+{
+    height: 20px;
+    margin-right: 5px;
+}
+.main-reports select
+{
+    height: 30px;
+}
+.including-checkbox
+{
+    margin-left: 120px;
+}
+.including-current
+{
+    background-color: white;
+}
+.including-current-label
+{
+    font-size: 13px;
+    color: lightgray;
+    font-weight: 300;
+}

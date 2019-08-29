@@ -1,0 +1,4 @@
+.content-wrapper{
+  /* min-height: 700px !important; */
+  min-height: calc(100vh - 300px) !important;
+}

@@ -1,0 +1,144 @@
+<aside class="main-sidebar">
+  <div class="main-reports">
+
+    <form>
+      <div class="template-div">
+        <label class="template-label">Template</label>
+        <select name="templates">
+          <option value="x">X</option>
+          <option value="y">Y</option>
+          <option value="z">Z</option>
+        </select>
+      </div>
+
+      <div class="element-div">
+        <label class="element-label">Object</label>
+        <select name="elements">
+          <option value="A user">A user</option>
+          <option value="B user">B user</option>
+          <option value="C user">C user</option>
+        </select>
+      </div>
+
+      <div class="add-element">
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-plus"></span> Add Element
+        </button>
+      </div>
+
+      <div class="time-buttons">
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-primary" (click)="this.isToday = true; this.isYesterday = false; this.isWeekly = false; this.isMonthly = false">Today</button>
+          <button type="button" class="btn btn-primary" (click)="this.isYesterday = true; this.isToday = false; this.isWeekly = false; this.isMonthly = false">Yesterday</button>
+          <button type="button" class="btn btn-primary" (click)="this.isWeekly = true; this.isToday = false; this.isYesterday = false; this.isMonthly = false">Week</button>
+          <button type="button" class="btn btn-primary" (click)="this.isMonthly = true; this.isToday = false; this.isWeekly = false; this.isYesterday = false">Month</button>
+        </div>
+      </div>
+
+      <div class="times-change">
+        <div class="today" *ngIf="this.isToday">
+          <label class="today-interval">Interval</label>
+          <select name="today-interval">
+            <option value="today-specified">Specified interval</option>
+            <option value="today-starts">Starts from until today</option>
+            <option value="today-previous">For previous</option>
+          </select>
+          <label for="today-from-date" class="today-from">From</label>
+          <input type="date" id="today-from-date" value="2019 August 19 00:00" data-date-inline-picker="true">
+          <label for="today-to-date" class="today-to">To</label>
+          <input type="date" id="today-to-date" value="2019 August 19 23.59" data-date-inline-picker="true">
+        </div>
+
+        <div class="yesterday" *ngIf="this.isYesterday">
+          <div class="yesterday-interval-div">
+            <label class="yesterday-interval-label">Interval</label>
+            <select name="yesterday-interval">
+              <option value="yesterday-previous">For previous</option>
+              <option value="yesterday-specified">Specified interval</option>
+              <option value="yesterday-starts">Starts from until today</option>
+            </select>
+          </div>
+          <div class="yesterday-range-div">
+            <input type="number" id="yesterday-range-number" name="" min="0">
+            <select name="yesterday-interval">
+              <option value="yesterday-minutes">minutes</option>
+              <option value="yesterday-hours">hours</option>
+              <option value="yesterday-days" selected="selected">days</option>
+              <option value="yesterday-weeks">weeks</option>
+              <option value="yesterday-months">months</option>
+              <option value="yesterday-years">years</option>
+            </select>
+          </div>
+          <div class="including-checkbox">
+            <input type="checkbox" name="checkbox" class="including-current">
+            <label class="including-current-label">Including current</label>
+          </div>
+        </div>
+
+        <div class="weekly" *ngIf="this.isWeekly">
+            <div class="weekly-interval-div">
+              <label class="weekly-interval-label">Interval</label>
+              <select name="weekly-interval">
+                <option value="weekly-previous">For previous</option>
+                <option value="weekly-specified">Specified interval</option>
+                <option value="weekly-starts">Starts from until today</option>
+              </select>
+            </div>
+            <div class="weekly-range-div">
+              <input type="number" id="weekly-range-number" name="" min="0">
+              <select name="weekly-interval">
+                <option value="weekly-minutes">minutes</option>
+                <option value="weekly-hours">hours</option>
+                <option value="weekly-days">days</option>
+                <option value="weekly-weeks" selected="selected">weeks</option>
+                <option value="weekly-months">months</option>
+                <option value="weekly-years">years</option>
+              </select>
+            </div>
+            <div class="including-checkbox">
+              <input type="checkbox" name="checkbox" class="including-current">
+              <label class="including-current-label">Including current</label>
+            </div>
+          </div>
+
+          <div class="monthly" *ngIf="this.isMonthly">
+              <div class="monthly-interval-div">
+                <label class="monthly-interval-label">Interval</label>
+                <select name="monthly-interval">
+                  <option value="monthly-previous">For previous</option>
+                  <option value="monthly-specified">Specified interval</option>
+                  <option value="monthly-starts">Starts from until today</option>
+                </select>
+              </div>
+              <div class="monthly-range-div">
+                <input type="number" id="monthly-range-number" name="" min="0">
+                <select name="monthly-interval">
+                  <option value="monthly-minutes">minutes</option>
+                  <option value="monthly-hours">hours</option>
+                  <option value="monthly-days">days</option>
+                  <option value="monthly-weeks">weeks</option>
+                  <option value="monthly-months" selected="selected">months</option>
+                  <option value="monthly-years">years</option>
+                </select>
+              </div>
+              <div class="including-checkbox">
+                <input type="checkbox" name="checkbox" class="including-current">
+                <label class="including-current-label">Including current</label>
+              </div>
+            </div>
+
+        <div class="buttons-submit">
+          <button type="button" class="clear">Clear</button>
+          <button type="button" class="execute">Execute</button>
+        </div>
+
+
+
+
+      </div>
+    </form>
+
+  </div>
+
+
+</aside>
