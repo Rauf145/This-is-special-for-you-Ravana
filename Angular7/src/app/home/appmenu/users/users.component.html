@@ -1,0 +1,110 @@
+<script src="../../../assets/dist/js/adminlte.min.js"></script>
+<div class="custom-modal-wrapper" id="custom-modal" *ngIf="modal.openNewUser">
+  <div class="custom-modal">
+    <div class="custom-modal-header">
+      New User
+      <button class="btn btn-none custom-modal-close modal-close" style="padding: 0;color: #fff;"
+        (click)="modal.closeNewUserModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="user-buttons">
+      <div class="btn-group btn-group-sm" role="group">
+        <button type="button" class="btn btn-primary">General</button>
+        <button type="button" class="btn btn-primary">Entry</button>
+        <button type="button" class="btn btn-primary">Improve</button>
+        <button type="button" class="btn btn-primary">Log</button>
+        <button type="button" class="btn btn-primary">Special Areas</button>
+      </div>
+    </div>
+    <form #form='ngForm' autocomplete="off">
+      <div class="custom-modal-body">
+        <div class="new-user-info">
+          <div class="new-user-name">
+            <label>Name<span id="require">*</span></label>
+            <input type="text" required>
+          </div>
+          <div class="new-user-password">
+            <label>Password<span id="require">*</span></label>
+            <input type="password">
+          </div>
+          <div class="new-user-confirm-password">
+            <label>Confirm Password<span id="require">*</span></label>
+            <input type="password">
+          </div>
+          <div class="new-user-main-mask">
+            <label>Main Mask</label>
+            <input type="text">
+          </div>
+          <div class="new-user-creator">
+            <label>Creator</label>
+            <select>
+              <option selected="selected">ITuser</option>
+            </select>
+          </div>
+          <div class="new-user-account">
+            <label>Account</label>
+            <input type="text" disabled>
+          </div>
+          <div class="new-user-measure-system">
+            <label>Measure System</label>
+            <select>
+              <option selected="selected">Metric</option>
+              <option>U.S.</option>
+              <option>Imperial</option>
+              <option>Metric with gallons</option>
+            </select>
+          </div>
+          <div class="new-user-member">
+            <label>Member can be created:</label>
+            <input type="checkbox">
+          </div>
+          <div class="new-user-passwordd">
+            <label>Password can be changed:</label>
+            <input type="checkbox">
+          </div>
+          <div class="new-user-sms">
+            <label>SMS can be sent:</label>
+            <input type="checkbox">
+          </div>
+          <div class="new-user-turnon">
+            <label>Turning on:</label>
+            <input type="checkbox">
+          </div>
+          <div class="new-user-settings">
+            <label>Settings can be changed:</label>
+            <input type="checkbox">
+          </div>
+        </div>
+      </div>
+      <div class="custom-modal-action d-flex justify-content-between" style="padding: 10px;">
+        <div class="modal-buttons">
+          <button class="btn btn-default modal-close" (click)="modal.closeNewUserModal()">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            OK
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<aside class="main-sidebar">
+  <div class="main-users">
+
+    <form>
+      <div class="users-main">
+        <button type="button" (click)="modal.openNewUserModal()" class="btn btn-sm"><i class="fas fa-plus"></i> New</button>
+        <div class="search">
+          <span class="fa fa-search"></span>
+          <input placeholder="Search">
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+</aside>

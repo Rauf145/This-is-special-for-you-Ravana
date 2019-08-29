@@ -4,7 +4,9 @@ export class Modal {
   public open: boolean;
   public model: Device;
   public openAdd: boolean;
+  public openNewUser: boolean;
   public openNewDriver: boolean;
+
 
   openModal(device){
     this.open = true;
@@ -22,6 +24,13 @@ export class Modal {
   }
   closeAddModal(){
     this.openAdd = false;
+  }
+  openNewUserModal()
+  {
+    this.openNewUser=true;
+  }
+  closeNewUserModal(){
+    this.openNewUser = false;
   }
   openNewDriverModal()
   {
