@@ -23,7 +23,7 @@
     "@types/leaflet": "^1.4.4",
     "@types/leaflet-rotatedmarker": "^0.2.1",
     "@types/socket.io-client": "^1.4.32",
-    "async": "^3.1.0",
+    "async": "^3.2.2",
     "core-js": "^2.5.4",
     "ionicons": "^4.6.1",
     "leaflet": "^1.5.1",
